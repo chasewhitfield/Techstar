@@ -29,4 +29,24 @@ public class Intern {
         pow(this.globe4 - other.globe4, 2) +
         pow(this.globe5 - other.globe5, 2));
     }
+
+    public List<Intern> getClosestInterns(List<Intern> others, int howMany) {
+        /**
+         * Given a list of other Interns (which may include this Intern), find the closest
+         * Interns to this one.
+         * 
+         * If the provided List includes this Intern, that item isn't considered.
+         */
+        // Set up a comparator to compare by distance to this Intern
+        Comparator<Intern> comparator = (i1, i2) -> this.distanceToOtherIntern(i1).compareTo(this.distanceToOtherIntern(i2));
+        return others.stream()
+        // Filter out any list entries that correspond to this Intern (their names will match)
+        .filter(other -> !other.name.equals(this.name))
+        // Sort by distance to this Intern
+        .sorted(comparator)
+        // Take only the first few Interns, depending on the parameter
+        .limit(howMany)
+        // Convert the result to a List
+        .collect(Collectors.toList());
+    }
 }
