@@ -79,6 +79,7 @@ public class EmailDemoApplication {
         File csv = new File(filePath); //might have to change to filepath
         try {
             Scanner sc = new Scanner(csv);
+            sc.nextLine();
             while (sc.hasNextLine()) {
                 String curRow = sc.nextLine();
                 String[] cols = curRow.split(","); //Need to parse out whitespace
