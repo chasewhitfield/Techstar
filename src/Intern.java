@@ -20,6 +20,58 @@ public class Intern {
     {
         return this.name;
     }
+    
+    public String generateEmail()
+    {
+        String email = "";
+        String s = this.name;
+        //get Index of first whitespace
+        int space = s.indexOf(" ");
+        //eliminate accidental preceding whitespace
+        while (space == 0) {
+            System.out.println(space);
+            s = s.substring(1);
+            space = s.indexOf(" ");
+        }
+        //invalid if no space found or there is only a first name given
+        if(space == -1 || space == s.length()-1)
+        {
+            return ("Invalid Email");
+        }
+        //build email string
+        email = email.concat(s.substring(0, space));
+        email = email.concat(".");
+        email = email.concat(s.substring(space + 1));
+        email = email.replaceAll(" ", "");
+        email = email.concat("@ukg.com");
+        email = email.toLowerCase();
+        return email;
+    }
+
+    public int getGlobe1()
+    {
+        return this.globe1;
+    }
+
+    public int getGlobe2()
+    {
+        return this.globe2;
+    }
+
+    public int getGlobe3()
+    {
+        return this.globe3;
+    }
+
+    public int getGlobe4()
+    {
+        return this.globe4;
+    }
+
+    public int getGlobe5()
+    {
+        return this.globe5;
+    }
 
     public double distanceToOtherIntern(Intern other) {
         /**
