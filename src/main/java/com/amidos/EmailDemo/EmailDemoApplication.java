@@ -31,7 +31,7 @@ public class EmailDemoApplication {
 		System.out.println("Now generating csv...");
         ArrayList<Intern> TechStar = generateList("intern.csv");
 
-        Intern a = new Intern("Chase Whitfield", 5, 5, 5, 5, 5, 5, 5,
+        Intern a = new Intern("Chase Whitfield2", 5, 5, 5, 5, 5, 5, 5,
                 5, 5, 5, 5, 5, 5, 5, 5, 5, 5
         , 5, 5);
         
@@ -135,9 +135,11 @@ public class EmailDemoApplication {
 				//Uhh what do we do here
 			}
 			else if(internEmails.size() == 1) {
+				System.out.println("Size is 1");
 				sendEmail(internEmails.get(0));
 			}
 			else {
+				System.out.println("Size is many");
 				sendEmail(internEmails);
 			}
 		};
