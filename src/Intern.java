@@ -105,4 +105,8 @@ public class Intern {
         // Convert the result to a List
         .collect(Collectors.toList());
     }
+
+    public String toString() {
+        return String.format("%s, attributes [%s %s %s %s %s]", name, globe1, globe2, globe3, globe4, globe5);
+    }
 }
