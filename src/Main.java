@@ -13,8 +13,9 @@ public class Main {
     static ArrayList<Intern> generateList(String filePath) throws FileNotFoundException {
         ArrayList<Intern> interns = new ArrayList<Intern>();
         File csv = new File(filePath); //might have to change to filepath
+        Scanner sc = null;
         try {
-            Scanner sc = new Scanner(csv);
+            sc = new Scanner(csv);
             while (sc.hasNextLine()) {
                 String curRow = sc.nextLine();
                 String[] cols = curRow.split(",");
@@ -26,6 +27,10 @@ public class Main {
         catch (FileNotFoundException e) {
             System.out.println("File not found");
             throw e;
+        } finally {
+            if (sc != null) {
+                sc.close();
+            }
         }
         return interns;
     }
