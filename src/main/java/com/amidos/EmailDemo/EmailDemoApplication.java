@@ -27,11 +27,11 @@ public class EmailDemoApplication {
 	}
 	
 	
-	 public String generateCSV () throws FileNotFoundException {
+	 public ArrayList<String> generateCSV () throws FileNotFoundException {
 		System.out.println("Now generating csv...");
         ArrayList<Intern> TechStar = generateList("intern.csv");
 
-        Intern a = new Intern("Chase Whitfield2", 5, 5, 5, 5, 5, 5, 5,
+        Intern a = new Intern("Chase Whitfield", 5, 5, 5, 5, 5, 5, 5,
                 5, 5, 5, 5, 5, 5, 5, 5, 5, 5
         , 5, 5);
         
@@ -47,6 +47,7 @@ public class EmailDemoApplication {
             System.out.println("Distance from you: " + partner.distanceToOtherIntern(a));
         }
         
+        String internEmail = a.generateEmail();
         String potentialEmails = "";
         
         if(emails != null && emails.size() > 0) {
@@ -67,8 +68,10 @@ public class EmailDemoApplication {
         	System.out.println("Intern " + a.getName() + " will be getting the email addresses of: " + potentialEmails);
         }
         
-        //TODO: Return the email of "Intern a" to be passed to send email
-        return potentialEmails;
+        ArrayList<String> internInfo = new ArrayList<>();
+        internInfo.add(internEmail);
+        internInfo.add(potentialEmails);
+        return internInfo;
     }
 
     static ArrayList<Intern> generateList(String filePath) throws FileNotFoundException {
@@ -120,7 +123,7 @@ public class EmailDemoApplication {
         
     		msg.setTo(internThatFilledInTheSurvey);
     		msg.setSubject("Matches were found!");
-    		msg.setText("Hello!"); 		   		
+    		msg.setText("Hello! Here is the list of emails that most similiar to yours: " + inEmails); 		   		
     		javaMailSender.send(msg);
     	}
     	catch(MailAuthenticationException e) {
@@ -144,14 +147,10 @@ public class EmailDemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {
-			String internEmails = generateCSV();
+			ArrayList<String> internInfo = generateCSV();
 			
-			if(internEmails == null) {
-				//Uhh what do we do here
-			}
-			else {
-				sendEmail("insert the interns email that filled in the survey here", internEmails);
-			}
+			//0 is the intern's email, 1 is the emails that will be sent to them
+			sendEmail(internInfo.get(0), internInfo.get(1));
 		};
 	}
 	
