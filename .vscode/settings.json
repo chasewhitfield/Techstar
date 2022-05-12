@@ -1,12 +1,7 @@
 {
     "java.project.referencedLibraries": {
         "include": [
-            "lib/**/*.jar",
-            "Extensions/*.jar"
-        ],
-        "exclude": [
-            "Extensions/activation.jar",
-            "Extensions/javax.mail.jar"
+            "lib/**/*.jar"
         ]
     }
 }
