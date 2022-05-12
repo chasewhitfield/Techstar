@@ -30,9 +30,17 @@
                 Please enter your name. The program will look for your record and match you with your 3 most compatible co-workers.
             </p>
 
-            <label for="exampleFormControlInput1" class="form-label">Name</label>
-            <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Jane Doe">
-
+            <div class="row justify-content-center">
+                <div class="col-1 col-form-label">
+                    <label for="nameInput">Name</label>
+                </div>
+                <div class="col-10">
+                    <input type="text" class="form-control" id="nameInput" placeholder="Jane Doe">
+                </div>
+                <div class="col-1 text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>  
             <div class="d-flex justify-content-center mt-3">
                 <div class="spinner-border text-primary" role="status">
                     <span class="visually-hidden">Loading...</span>
