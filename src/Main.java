@@ -8,5 +8,7 @@ public class Main {
         interns.add(i);
 
         System.out.println(i.getName());
+        
+        System.out.println("Hello world, this is a test branch!");
     }
 }
