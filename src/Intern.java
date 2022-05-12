@@ -5,8 +5,11 @@ import java.util.stream.Collectors;
 public class Intern {
 
     private final String name;
-    public final int globe1, globe2, globe3, globe4, globe5;
-    public Intern(String name, int globe1, int globe2, int globe3, int globe4, int globe5)
+    public final int globe1, globe2, globe3, globe4, globe5, sports, music1, music2, movie, workout, read, photo, extroverted, energetic, impulsive, cautious, persistent, perceptive, creative;
+
+    public Intern(String name, int globe1, int globe2, int globe3, int globe4, int globe5, int sports,
+                  int music1, int music2, int movie, int workout, int read, int photo, int extroverted,
+                  int energetic, int impulsive, int cautious, int persistent, int perceptive, int creative)
     {
         this.name = name;
         this.globe1 = globe1;
@@ -14,6 +17,20 @@ public class Intern {
         this.globe3 = globe3;
         this.globe4 = globe4;
         this.globe5 = globe5;
+        this.sports = sports;
+        this.music1 = music1;
+        this.music2 = music2;
+        this.movie = movie;
+        this.workout = workout;
+        this.read = read;
+        this.photo = photo;
+        this.extroverted = extroverted;
+        this.energetic = energetic;
+        this.impulsive = impulsive;
+        this.cautious = cautious;
+        this.persistent = persistent;
+        this.perceptive = perceptive;
+        this.creative = creative;
     }
 
     public String getName()
@@ -48,31 +65,6 @@ public class Intern {
         return email;
     }
 
-    public int getGlobe1()
-    {
-        return this.globe1;
-    }
-
-    public int getGlobe2()
-    {
-        return this.globe2;
-    }
-
-    public int getGlobe3()
-    {
-        return this.globe3;
-    }
-
-    public int getGlobe4()
-    {
-        return this.globe4;
-    }
-
-    public int getGlobe5()
-    {
-        return this.globe5;
-    }
-
     public double distanceToOtherIntern(Intern other) {
         /**
          *  Calculates the Euclidean/L2 distance between this Intern and the
@@ -83,7 +75,21 @@ public class Intern {
                 Math.pow(this.globe2 - other.globe2, 2) +
                 Math.pow(this.globe3 - other.globe3, 2) +
                 Math.pow(this.globe4 - other.globe4, 2) +
-                Math.pow(this.globe5 - other.globe5, 2));
+                Math.pow(this.globe5 - other.globe5, 2) +
+                Math.pow(this.sports - other.sports, 2) +
+                Math.pow(this.music1- other.music1, 2) +
+                Math.pow(this.music2 -other.music2, 2) +
+                Math.pow(this.movie - other.movie, 2) +
+                Math.pow(this.workout - other.workout, 2) +
+                Math.pow(this.read - other.read, 2) +
+                Math.pow(this.photo - other.photo, 2) +
+                Math.pow(this.extroverted - other.extroverted, 2) +
+                Math.pow(this.energetic - other.energetic, 2) +
+                Math.pow(this.impulsive - other.impulsive, 2) +
+                Math.pow(this.cautious - other.cautious, 2) +
+                Math.pow(this.persistent - other.persistent, 2) +
+                Math.pow(this.perceptive - other.perceptive, 2) +
+                Math.pow(this.creative - other.creative, 2));
     }
 
     public List<Intern> getClosestInterns(List<Intern> others, int howMany) {
