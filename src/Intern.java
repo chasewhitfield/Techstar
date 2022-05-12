@@ -1,7 +1,7 @@
 public class Intern {
 
-    private String name;
-    private int globe1, globe2, globe3, globe4, globe5;
+    private final String name;
+    public final int globe1, globe2, globe3, globe4, globe5;
     public Intern(String name, int globe1, int globe2, int globe3, int globe4, int globe5)
     {
         this.name = name;
