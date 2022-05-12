@@ -42,20 +42,11 @@
             </h2>
 
 
-            <div>
-                <h3 th:text="'Name: ' + ${results.matchOneName}" />
-                <p th:text="'Scores: ' + ${results.matchOneScores}" />
+            <div th:each="match: ${matches}">
+                <h3 th:text="'Name: ' + ${match.name}" />
+                <p th:text="'Scores: ' + ${match.scores}" />
             </div>
 
-            <div>
-                <h3 th:text="'Name: ' + ${results.matchTwoName}" />
-                <p th:text="'Scores: ' + ${results.matchTwoName}" />
-            </div>
-
-            <div>
-                <h3 th:text="'Name: ' + ${results.matchThreeName}" />
-                <p th:text="'Scores: ' + ${results.matchThreeName}" />
-            </div>
 
             
         </div>
