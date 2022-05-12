@@ -16,4 +16,17 @@ public class Intern {
     {
         return this.name;
     }
+
+    public double distanceToOtherIntern(Intern other) {
+        /**
+         *  Calculates the Euclidean/L2 distance between this Intern and the
+         *  provided Intern, using their 5 "globe" attributes as dimensions.
+         **/
+
+        return sqrt(pow(this.globe1 - other.globe1, 2) +
+        pow(this.globe2 - other.globe2, 2) +
+        pow(this.globe3 - other.globe3, 2) +
+        pow(this.globe4 - other.globe4, 2) +
+        pow(this.globe5 - other.globe5, 2));
+    }
 }
