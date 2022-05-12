@@ -31,7 +31,7 @@ public class EmailDemoApplication {
 		System.out.println("Now generating csv...");
         ArrayList<Intern> TechStar = generateList("intern.csv");
 
-        Intern a = new Intern("Chase Whitfield", 5, 5, 5, 5, 5, 5, 5,
+        Intern a = new Intern("Ivan Brenes", 5, 5, 5, 5, 5, 5, 5,
                 5, 5, 5, 5, 5, 5, 5, 5, 5, 5
         , 5, 5);
         
