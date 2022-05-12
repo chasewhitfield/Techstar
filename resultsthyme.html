@@ -33,8 +33,8 @@
             </p>
 
             <div>
-                <h3>Name: xxxxxx </h3>
-                <p>Score: xxxxx</p>
+                <h3 th:text="'Your Name: ' + ${results.username}" />
+                <p th:text="'Your Scores: ' + ${results.userScores}" />
             </div>
 
             <h2>
@@ -43,18 +43,18 @@
 
 
             <div>
-                <h3>Name: xxxxxx</h3>
-                <p>Score: xxxxx</p>
+                <h3 th:text="'Name: ' + ${results.matchOneName}" />
+                <p th:text="'Scores: ' + ${results.matchOneScores}" />
             </div>
 
             <div>
-                <h3>Name: xxxxxx</h3>
-                <p>Score: xxxxx</p>
+                <h3 th:text="'Name: ' + ${results.matchTwoName}" />
+                <p th:text="'Scores: ' + ${results.matchTwoName}" />
             </div>
 
             <div>
-                <h3>Name: xxxxxx</h3>
-                <p>Score: xxxxx</p>
+                <h3 th:text="'Name: ' + ${results.matchThreeName}" />
+                <p th:text="'Scores: ' + ${results.matchThreeName}" />
             </div>
 
             
