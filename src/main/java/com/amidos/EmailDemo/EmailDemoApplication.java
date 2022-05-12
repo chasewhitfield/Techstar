@@ -27,7 +27,7 @@ public class EmailDemoApplication {
 	}
 	
 	
-	 public ArrayList<String> generateCSV () throws FileNotFoundException {
+	 public String generateCSV () throws FileNotFoundException {
 		System.out.println("Now generating csv...");
         ArrayList<Intern> TechStar = generateList("intern.csv");
 
@@ -37,14 +37,38 @@ public class EmailDemoApplication {
         
         System.out.println("Going through for loop...");
         List<Intern> partners = a.getClosestInterns(TechStar, 2);
+        
         ArrayList<String> emails = new ArrayList<>();
+        
         for (Intern partner : partners) {
         	String partEmail = partner.generateEmail();
             System.out.println(partEmail);
             emails.add(partEmail);
             System.out.println("Distance from you: " + partner.distanceToOtherIntern(a));
         }
-        return emails;
+        
+        String potentialEmails = "";
+        
+        if(emails != null && emails.size() > 0) {
+        	
+        	StringBuilder builder = new StringBuilder();
+        	
+        	for(int i = 0; i < emails.size(); i++) {
+        		if(i != emails.size() - 1 ) {
+        			builder.append(emails.get(i) + ", ");
+        		}
+        		else {
+        			builder.append(emails.get(i) + " and that is all of the emails.");
+        		}
+        	}
+        	
+        	potentialEmails = builder.toString();
+        	
+        	System.out.println("Intern " + a.getName() + " will be getting the email addresses of: " + potentialEmails);
+        }
+        
+        //TODO: Return the email of "Intern a" to be passed to send email
+        return potentialEmails;
     }
 
     static ArrayList<Intern> generateList(String filePath) throws FileNotFoundException {
@@ -83,30 +107,21 @@ public class EmailDemoApplication {
 
     }
     
+    /*
     private void sendEmail() {
     	System.out.println("Putting in a default email...");
     	sendEmail("interest.finder.for.ukg.members@gmail.com");
     }
-    
-    private void sendEmail(ArrayList<String> inEmails) {
-    	for(int i = 0; i < inEmails.size(); i++) {
-    		sendEmail(inEmails.get(i));
-    	}
-    }
+    */
 
-    private void sendEmail(String toSomeone) {
+    private void sendEmail(String internThatFilledInTheSurvey, String inEmails) {
     	try {
     		SimpleMailMessage msg = new SimpleMailMessage();
         
-    		msg.setTo(toSomeone);
-    		msg.setSubject("Testing from Spring Boot");
-    		msg.setText("Hello World \n Spring Boot Email");
-    		
-    		System.out.println("Now sending the email...");
-    		
+    		msg.setTo(internThatFilledInTheSurvey);
+    		msg.setSubject("Matches were found!");
+    		msg.setText("Hello!"); 		   		
     		javaMailSender.send(msg);
-    		
-    		System.out.println("Email sending was a success!");
     	}
     	catch(MailAuthenticationException e) {
     		System.out.println("Authentication was wrong! " + e.toString());
@@ -129,18 +144,13 @@ public class EmailDemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(ApplicationContext ctx) {
 		return args -> {
-			ArrayList<String> internEmails = generateCSV();
+			String internEmails = generateCSV();
 			
 			if(internEmails == null) {
 				//Uhh what do we do here
 			}
-			else if(internEmails.size() == 1) {
-				System.out.println("Size is 1");
-				sendEmail(internEmails.get(0));
-			}
 			else {
-				System.out.println("Size is many");
-				sendEmail(internEmails);
+				sendEmail("insert the interns email that filled in the survey here", internEmails);
 			}
 		};
 	}
