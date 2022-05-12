@@ -15,7 +15,6 @@ public class Main {
         File csv = new File(filePath); //might have to change to filepath
         try {
             Scanner sc = new Scanner(csv);
-            Intern cur = new Intern();
             while (sc.hasNextLine()) {
                 String curRow = sc.nextLine();
                 String[] cols = curRow.split(",");
